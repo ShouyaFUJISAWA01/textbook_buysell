@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会員ページ</title>
+</head>
+<body>
+    <table border="1">
+        <caption>会員情報</caption>
+        <tr><th>氏名</th><th></th></tr>
+        <tr><th>ユーザID</th><th></th></tr>
+    </table>
+    <form action="{{url_for('home')}}">
+    <p><input type="submit" value="退会"></p>
+    </form>
+
+    <p><a href="{{url_for('user_info_change')}}">会員情報変更</a></p>
+    <p><a href="{{url_for('book_register')}}">教科書登録</a></p>
+    <p><a href="{{url_for('buy')}}">購入</a></p>
+
+   <!-- {% if  %} 管理者の場合のみ有効になる --> 
+    <p><a href="{{url_for('user_management')}}">（管理者専用）会員管理</a></p>
+    <p><a href="{{url_for('book_management')}}">（管理者専用）教科書管理</a></p>
+  <!-- {% endif %} -->  
+
+    <table border="1">
+        <caption>登録教科書一覧</caption>
+        <tr><th>教科書ID</th><th>タイトル</th><th>価格</th></tr>
+        <tr><th></th><th></th><th></th><th><form action="{{url_for('book_info_change')}}"><input type="submit" value="変更"></form></th><th><form action="{{url_for('home')}}"><input type="submit" value="削除"></form></th></tr>
+    </table>
+
+    <p><a href="{{url_for('top')}}">ログアウト</a></p>
+</body>
+</html>
