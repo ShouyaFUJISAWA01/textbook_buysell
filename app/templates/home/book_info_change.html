@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>教科書情報変更</title>
+    </head>
+    <body>
+        <form action="#" method="post">
+            <p>変更する教科書情報を入力してください</p>
+            <p>ISBN番号<input type="text" name="isbn"  size="20">
+                <p><small>ISBNの後は-なしで数字を入力してください</small></p>
+            <p>タイトル<input type="text" name="title"></p>
+            <p>著者<input type="text" name="author" size="20"></p>
+            <p>出版社<input type="text" name="company" size="20"></p>
+            <P>価格<input type="number" name="price" size="20" min="0" max="999999999"></P>
+            <p>分類
+                <select size="1" name="category">
+                    <option value="0">0 文学部系</option>
+                    <option value="1">1 教育学部系</option>
+                    <option value="2">2 法学部系</option>
+                    <option value="3">3 社会学部系</option>
+                    <option value="4">4 経済学部系</option>
+                    <option value="5">5 理学部系</option>
+                    <option value="6">6 医学部系</option>
+                    <option value="7">7 歯学部系</option>
+                    <option value="8">8 薬学部系</option>
+                    <option value="9">9 工学部系</option>
+                    <option value="10">10 農学部系</option>
+                </select>
+            </p>
+            <p>教科書の状態
+                <select size="1" name="status">
+                    <option value="1">新品</option>
+                    <option value="2">中古</option>
+                    <option value="3">未使用</option>
+                </select>
+            </p>
+
+          
+                <input type="submit" value="変更する">
+            
+        </form>
+    </body>
+</html>
