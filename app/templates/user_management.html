@@ -7,7 +7,7 @@
     <title>（管理者専用）会員管理</title>
 </head>
 <body>
-    <form action="{{url_for('user_search')}}" method="POST">
+    <form action="{{url_for('user_management.user_search')}}" method="POST">
         <p>会員検索（ユーザ名を入力）<input type="search"><input type="submit" value="検索"></p>
 
     </form>
@@ -33,12 +33,12 @@
                 <td>{{user.tel}}</td>
                 <td>{{user.email}}</td>
                 <td>
-                    <form action="{{url_for('user_update', id=user.id)}}" method="POST">
+                    <form action="{{url_for('user_management.user_update', id=user.id)}}" method="POST">
                         <button type="submit">変更</button>
                     </form>
                 </td>
                 <td>
-                    <form action="{{url_for('user_delete', id=user.id)}}" method="POST">
+                    <form action="{{url_for('user_management.user_delete', id=user.id)}}" method="POST">
                         <button type="submit">削除</button>
                     </form>
                 </td>
