@@ -11,5 +11,5 @@ import lib.models
 
 
 def init_db(app):
-    db.init_app
+    db.init_app(app)
     Migrate(app, db)

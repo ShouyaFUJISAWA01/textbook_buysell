@@ -10,8 +10,8 @@ class User(db.Model):
     address = db.Column(db.String(200), nullable=False)
     tel = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(50), nullable=False)
-    updated = db.Column(db.Datetime, nullable=True)
-    created = db.Column(db.Datetime, nullable=False, default=datetime.datetime.now)
+    updated = db.Column(db.DateTime, nullable=True)
+    created = db.Column(db.DateTime, nullable=False)
     book = db.relationship('User', backref='user', uselist=False)
     
     def __init__(self, name, address, tel, email, updated):

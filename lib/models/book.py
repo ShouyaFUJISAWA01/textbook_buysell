@@ -14,8 +14,8 @@ class Book(db.Model):
     price = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String(50), nullable=False)
     status = db.Column(db.String(50), nullable=False)
-    updated = db.Column(db.Datetime, nullable=True)
-    created = db.Column(db.Datetime, nullable=False, default=datetime.datetime.now)
+    updated = db.Column(db.DateTime, nullable=True)
+    created = db.Column(db.DateTime, nullable=False)
     
     def __init__(self, user_id, isbd_no, title, author, publisher, price, category, status, updated):
         self.user_id = user_id
