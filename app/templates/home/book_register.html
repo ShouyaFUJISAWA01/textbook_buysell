@@ -5,7 +5,7 @@
         <title>教科書売買システム</title>
     </head>
     <body>
-        <form action="#" method="post">
+        <form action="{{url_for('book_register.book_register')}}" method="POST">
             <p>登録する教科書を入力してください</p>
             <p>タイトル<input type="text" name="name"></p>
             <p>ISBN番号＜教科書背面ISBN以降の数字（ハイフンなし）＞ <input type="text" name="isbn_no"></p>

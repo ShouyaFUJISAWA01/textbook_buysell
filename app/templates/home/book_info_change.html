@@ -5,7 +5,7 @@
         <title>教科書情報変更</title>
     </head>
     <body>
-        <form action="#" method="post">
+        <form action="{{url_for('book_info_change.book_info_change')}}" method="POST">
             <p>変更する教科書情報を入力してください</p>
             <p>ISBN番号<input type="text" name="isbn"  size="20">
                 <p><small>ISBNの後は-なしで数字を入力してください</small></p>

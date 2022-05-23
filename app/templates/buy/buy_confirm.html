@@ -23,11 +23,11 @@
             </tr>
         </table>
         <div>
-            <input type="radio" name="pay_method" value="1" checked>クレジットカード
-            <input type="radio" name="pay_method" value="2">口座振替
-            <input type="radio" name="pay_method" value="3">代引き
+        <form action="{{ url_for('buy.buy_complete')}}" method="post">
+             <input type="radio" name="pay_method" value="1" checked>クレジットカード
+             <input type="radio" name="pay_method" value="2">口座振替
+             <input type="radio" name="pay_method" value="3">代引き
         </div>
-        <form action="#" method="post">
             <input type="submit" value="購入">
         </form>
     </body>

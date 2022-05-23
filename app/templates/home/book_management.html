@@ -2,11 +2,13 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>教科書情報管理ページ（管理者用</title>
+        <title>教科書情報管理ページ（管理者用)</title>
     </head>
     <body>
-        <form>
+        <form action="{{url_for('book_management.book_search')}}" method="POST">
         <p>教科書検索（教科書名）<input type="search"><input type="submit" value="検索"></p>
+        </form>
+      
         <table border="1">
             <caption>教科書情報一覧</caption>
             <tr>
@@ -25,46 +27,20 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type="submit" value="変更"></td><td><input type="submit" value="削除"></td>
+                <td>
+                    <form action="{{url_for('book_management.book_info_show')}}" method="GET">
+                    <input type="submit" value="変更">
+                </td>
+                    </form>
+                <td>
+                    <form action="{{url_for('book_management.book_delete')}}" method="POST">
+                    <input type="submit" value="削除">
+                </td>
+                    </form>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="submit" value="変更"></td><td><input type="submit" value="削除"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="submit" value="変更"></td><td><input type="submit" value="削除"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="submit" value="変更"></td><td><input type="submit" value="削除"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="submit" value="変更"></td><td><input type="submit" value="削除"></td>
-            </tr>
+           
             
         </table>        
-        </form>
+        
     </body>
 </html>
