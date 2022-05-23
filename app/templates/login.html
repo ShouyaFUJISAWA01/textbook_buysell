@@ -11,8 +11,10 @@
     <p>メールアドレス<input type="email" name="email"></p>
     <p>パスワード　<input type="password" name="password"></p>
     <p><input type="submit" value="ログイン"></p>
-
-    <p><a href="">新規会員登録はこちら</a></p>
     </form>
+
+    <form action="{{url_for('register')}}"></form>
+    <p><a href="">新規会員登録はこちら</a></p>
+    
 </body>
 </html>
