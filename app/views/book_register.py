@@ -16,8 +16,7 @@ book_register = Blueprint('book_register', __name__)
 def book_register():
     book=Book(
         name=request.form.get('name'),
-        user_id=session.get(),
-        # 後でhome.htmlを編集してほしいです。home.pyのbook_registerメソッドの返り値にログインしているユーザーIDを追加してほしいです。
+        user_id=session.get('auth_id'),
         isbd_no=request.form.get('isbn_no'),
         author=request.form.get('author'),
         company=request.form.get('company'),
