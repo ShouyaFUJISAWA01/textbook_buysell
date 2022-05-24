@@ -1,24 +1,24 @@
-from flask import render_template, request, url_for,session, redirect
+from flask import render_template, request, url_for,session, redirect, Blueprint
 
 from lib.db import db
 
-from lib.models import User
+from lib.models import User,Book
 
-from app import app
+top=Blueprint('top', __name__)
 
 
 #ログイン画面を表示
-@app.route('/')
+@top.route('/top')
 def top():
-    return render_template('login.html')
+    return render_template('top/login.html')
 
 #新規登録画面を表示
-@app.route('/register')
+@top.route('/top/register')
 def register():
-    return render_template('register.html')
+    return render_template('top/register.html')
 
 #フォームに入力された内容をuserテーブルに保存する
-@app.route('/register/create', methods=['POST'])
+@top.route('/top/register/create', methods=['POST'])
 def create():
     name=request.form.get('name'),
     address=request.form.get('address'),
@@ -32,11 +32,11 @@ def create():
         db.session.add(user)
         db.session.commit()
     except:
-        return redirect(url_for('register'))
-    return redirect(url_for('top'))
+        return redirect(url_for('top.register'))
+    return redirect(url_for('top.top'))
 
 #ログイン処理を行う
-@app.route('/login', methods=['GET', 'POST'])
+@top.route('/top/login', methods=['GET', 'POST'])
 def login():
     if request.method=='POST':
         email=request.form.get('email')
@@ -45,17 +45,21 @@ def login():
         user=User.query.filter(User.email==email)
         user=User.filter(User.password==password).first()
         if user is None:
-            return redirect(url_for('home'))
+            return redirect(url_for('top.home'))
         session['user_id']=user.user_id
-        return render_template('login.html')
+        return render_template('top/login.html')
 
 #会員ページを表示
-@app.route('/home')
+@top.route('/top/home')
 def home():
-    return render_template('home.html')
+    user_id=session('user_id')
+    books=Book.query.filter(user_id == User.user_id)
+    return render_template('top/home.html', books=books)
+    
+
 
 #ログアウト処理を行う
-@app.route('/logout')
+@top.route('/top/logout')
 def logout():
     session.pop('user_id', None)
-    return redirect(url_for('top'))
+    return redirect(url_for('top.top'))
