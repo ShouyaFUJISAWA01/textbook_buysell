@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, redirect,flash
+from flask import Blueprint, request, url_for, redirect,flash,session
 
 from lib.models import Book
 
@@ -16,7 +16,7 @@ book_info_change_delete = Blueprint('book_info_change', __name__)
 @book_info_change_delete.route('/book_info_change/<int:id>/update', methods=['POST'])
 def book_info_change(id):
     book=Book.query.get(id)
-    book.user_id = book.user_id
+    book.user_id = session('user_id')
     book.isbn_no=request.form.get('isbn_no')
     book.name=request.form.get('name')
     book.author=request.form.get('author')
