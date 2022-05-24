@@ -1,7 +1,6 @@
-from sre_parse import CATEGORIES
-from flask import Blueprint, render_template, request, url_for, session, redirect,flash
+from flask import Blueprint, request, url_for, redirect,flash
 
-from lib.models import Book, book
+from lib.models import Book
 
 from lib.db import db
 
