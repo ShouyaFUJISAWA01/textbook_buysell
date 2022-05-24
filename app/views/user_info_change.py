@@ -26,3 +26,11 @@ def user_info_change(id):
         flash('入力した内容を再度確認してください', 'error')
         return redirect(url_for('homes.user_info_change', id=id))
     return redirect(url_for('top.home'))
+
+# 以下で使うidを後ほどHTMLで指定する
+@user_info_change.route('/home/delete/<int:id>', methods=['POST'])
+def user_info_delete(id):
+    user_info = User.query.get(id)
+    db.session.delete(user_info)
+    db.session.commit()
+    return redirect(url_for('top.home'))
