@@ -1,5 +1,3 @@
-from http.client import CREATED
-from sre_parse import CATEGORIES
 from flask import Blueprint, request, url_for, session, redirect,flash
 
 import datetime
@@ -29,7 +27,7 @@ def book_register():
         db.session.add(book)
         db.session.commit()
     except:
-        flash('入力した値を再度確認してください')
+        flash('入力した値を再度確認してください', 'error')
         return redirect(url_for('homes.book_register'))
     return redirect(url_for('homes.home'))
 
