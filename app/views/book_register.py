@@ -30,20 +30,7 @@ def book_register():
         db.session.add(book)
         db.session.commit()
     except:
-        flash('入力した値を再度確認してください','error')
+        flash('入力した値を再度確認してください')
         return redirect(url_for('homes.book_register'))
-    flash('教科書が登録されました', 'sucsess')
-    # home.htmlにもflashメッセージが表示されるようにしてほしいです。
-    # {% for category, message in get_flashed_messages(with_categories=true) %}
-    #         {% if category == 'success' %}
-    #             <div style="background-color:#98fb98">
-    #                 {{message}}
-    #             </div>
-    #         {% elif category == 'error' %}
-    #             <div style="background-color: #ffc0cb">
-    #                 {{message}}
-    #             </div>
-    #         {% endif %}
-    #     {% endfor %}
     return redirect(url_for('homes.home'))
 

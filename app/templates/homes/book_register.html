@@ -5,18 +5,20 @@
         <title>教科書売買システム</title>
     </head>
     <body>
-        {% for category, message in get_flashed_messages(with_categories=true) %}
-            {% if category == 'success' %}
-                <div style="background-color:#98fb98">
-                    {{message}}
-                </div>
-            {% elif category == 'error' %}
-                <div style="background-color: #ffc0cb">
-                    {{message}}
-                </div>
+        <!-- flashメッセージの書き方がわかりません。教えてください。 -->
+        <!-- この直下に記述したいです。 -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class='flash'>
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
             {% endif %}
-        {% endfor %}
-        
+        {% endwith %}
+        <!-- これでいいのか？？ -->
         <form action="{{url_for('book_register.book_register')}}" method="POST">
             <h3>登録する教科書を入力してください</h3>
             <div>
