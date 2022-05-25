@@ -13,21 +13,21 @@
         <tr><th>氏名</th><th>{{user.name}}</th></tr>
         <tr><th>ユーザID</th><th>{{user.id}}</th></tr>
     </table>
-    <form action="{{url_for('user_info_change.user_info_delete')}}" method="post">
+    <form action="{{url_for('user_info_change.user_info_delete', id=user_id)}}" method="post">
     <p><input type="submit" value="退会"></p>
     </form>
 
     <!--会員のみ表示-->
     {% if user_id != 1 %}
-    <p><a href="{{url_for('homes.user_info_change')}}">会員情報変更</a></p>
-    <p><a href="{{url_for('homes.book_register')}}">教科書登録</a></p>
-    <p><a href="{{url_for('homes.buy')}}">購入</a></p>
+    <p><a href="{{url_for('home.user_info_change', id=user_id)}}">会員情報変更</a></p>
+    <p><a href="{{url_for('home.book_register')}}">教科書登録</a></p>
+    <p><a href="{{url_for('home.buy')}}">購入</a></p>
     {% endif %}
 
     <!--管理者のみ表示-->
     {% if user_id == 1 %}
-    <p><a href="{{url_for('homes.user_management')}}">（管理者専用）会員管理</a></p>
-    <p><a href="{{url_for('homes.book_management')}}">（管理者専用）教科書管理</a></p>
+    <p><a href="{{url_for('home.user_management')}}">（管理者専用）会員管理</a></p>
+    <p><a href="{{url_for('home.book_management')}}">（管理者専用）教科書管理</a></p>
     {% endif %}  
 
     <!--会員のみ表示-->
@@ -52,10 +52,11 @@
             <td>{{ book.category }}</td>
             <td>{{ book.status }}</td>
             <td>
-                <form action="{{url_for('home.book_info_change')}}"><input type="submit" value="変更"></form>
+                <form action="{{url_for('home.book_info_change', id=book.id)}}"><input type="submit" value="変更">
+                </form>
             </td>
             <td>
-                <form action="{{url_for('book_info_change.book_info_delete')}}" method="post"><input type="submit" value="削除"></form>
+                <form action="{{url_for('book_info_change.book_info_delete', id=book.id)}}" method="post"><input type="submit" value="削除"></form>
             </td>
         </tr>
         {% endfor %}

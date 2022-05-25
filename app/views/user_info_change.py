@@ -1,3 +1,4 @@
+from distutils.log import debug
 from flask import render_template, request, url_for, session, redirect, flash, Blueprint
 
 import datetime
@@ -28,9 +29,13 @@ def user_info_change(id):
     return redirect(url_for('top.home'))
 
 # 以下で使うidを後ほどHTMLで指定する
-@user_info_change_bp.route('/home/delete/<int:id>', methods=['POST'])
+@user_info_change_bp.route('/home/user_delete/<int:id>', methods=['POST'])
 def user_info_delete(id):
     user_info = User.query.get(id)
+    books_info = Book.query.filter(Book.user_id == id).all()
     db.session.delete(user_info)
     db.session.commit()
-    return redirect(url_for('top.home'))
+    for book_info in books_info:
+        db.session.delete(book_info)
+        db.session.commit()
+    return redirect(url_for('top.top'))

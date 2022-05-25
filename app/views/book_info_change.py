@@ -16,7 +16,7 @@ book_info_change_delete = Blueprint('book_info_change', __name__)
 @book_info_change_delete.route('/book_info_change/<int:id>/update', methods=['POST'])
 def book_info_change(id):
     book=Book.query.get(id)
-    book.user_id = session('user_id')
+    book.user_id = session.get('user_id')
     book.isbn_no=request.form.get('isbn_no')
     book.name=request.form.get('name')
     book.author=request.form.get('author')
@@ -34,9 +34,9 @@ def book_info_change(id):
     return redirect(url_for('top.home'))
 
 # 教科書削除処理
-@book_info_change_delete.route('/home/<int:id>/delete', methods=['POST'])
+@book_info_change_delete.route('/home/book_delete/<int:id>', methods=['POST'])
 def book_info_delete(id):
-  book = Book.query.get(id)
-  db.session.delete(book)
-  db.session.commit()
-  return redirect(url_for('top.home'))
+    book = Book.query.get(id)
+    db.session.delete(book)
+    db.session.commit()
+    return redirect(url_for('top.home'))
