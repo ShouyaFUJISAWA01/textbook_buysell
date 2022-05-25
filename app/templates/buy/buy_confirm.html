@@ -14,13 +14,15 @@
                 <th>分類</th>
                 <th>状態</th>
             </tr>
+            {% for item in buy_items %}
             <tr>
-                <td>1</td>
-                <td>example</td>
-                <td>1000</td>
-                <td>文学部系</td>
-                <td>中古</td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.status }}</td>
             </tr>
+            {% endfor %}
         </table>
         <div>
         <form action="{{ url_for('buy.buy_complete')}}" method="post">
