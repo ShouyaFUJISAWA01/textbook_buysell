@@ -13,7 +13,7 @@ home_bp = Blueprint('home', __name__)
 #購入ページの表示
 @home_bp.route('/buy')
 def buy():
-    user_id=session("user_id")
+    user_id=session.get("user_id")
     items=Book.query.filter(Book.user_id==user_id)#データベースBookクラスから一覧を持ってくる
     return render_template('homes/buy.html', items=items)
 
@@ -27,7 +27,7 @@ def book_register():
 #教科書情報変更ページの表示
 @home_bp.route('/book_info_change/<int:id>')
 def book_info_change(id):
-    book_change=Book.query.get(id)
+    book_change=Book.query.filter(Book.id == id).first()
     return render_template('homes/book_info_change.html', book_change=book_change)
 
 
@@ -39,7 +39,7 @@ def user_info_change(id):
 
 
 #会員管理ページの表示
-@home_bp.routte('/user_management')
+@home_bp.route('/user_management')
 def user_management():
     users=User.query.order_by(User.id.desc()).all()
     return render_template('homes/user_management.html', users=users)
