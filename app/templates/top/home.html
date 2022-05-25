@@ -7,6 +7,7 @@
     <title>会員ページ</title>
 </head>
 <body>
+    <!--データベースから会員情報を表示-->
     <table border="1">
         <caption>会員情報</caption>
         <tr><th>氏名</th><th></th></tr>
@@ -28,10 +29,29 @@
 
     <table border="1">
         <caption>登録教科書一覧</caption>
-        <tr><th>教科書ID</th><th>タイトル</th><th>価格</th><th>分類</th><th>状態</th></tr>
-        <tr><th></th><th></th><th></th><th></th><th></th><th><form action="{{url_for('home.book_info_change')}}"><input type="submit" value="変更"></form></th><th><form action="{{url_for('book_info_change.book_info_delete')}}" method="post"><input type="submit" value="削除"></form></th></tr>
+        <tr>
+            <th>教科書ID</th>
+            <th>タイトル</th>
+            <th>価格</th>
+            <th>分類</th>
+            <th>状態</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <th>{{ book.id }}</th>
+            <th>{{ book.title }}</th>
+            <th>{{ book.price }}</th>
+            <th>{{ book.category }}</th>
+            <th>{{ book.status }}</th>
+            <th>
+                <form action="{{url_for('home.book_info_change')}}"><input type="submit" value="変更"></form>
+            </th>
+            <th>
+                <form action="{{url_for('book_info_change.book_info_delete')}}" method="post"><input type="submit" value="削除"></form>
+            </th>
+        </tr>
+        {% endfor %}
     </table>
-
     <p><a href="{{url_for('top.logout')}}">ログアウト</a></p>
 </body>
 </html>
