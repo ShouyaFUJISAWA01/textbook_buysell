@@ -53,8 +53,9 @@ def login():
 @top.route('/top/home')
 def home():
     user_id=session('user_id')
-    books=Book.query.filter(user_id == User.user_id)
-    return render_template('top/home.html', books=books)
+    user = User.query.filter(User.id == user_id)
+    books=Book.query.filter(Book.user_id == user_id)
+    return render_template('top/home.html', books=books, user=user, user_id=user_id)
     
 
 

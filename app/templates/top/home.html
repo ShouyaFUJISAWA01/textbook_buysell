@@ -10,25 +10,31 @@
     <!--データベースから会員情報を表示-->
     <table border="1">
         <caption>会員情報</caption>
-        <tr><th>氏名</th><th></th></tr>
-        <tr><th>ユーザID</th><th></th></tr>
+        <tr><th>氏名</th><th>{{user.name}}</th></tr>
+        <tr><th>ユーザID</th><th>{{user.id}}</th></tr>
     </table>
     <form action="{{url_for('user_info_change.user_info_delete')}}" method="post">
     <p><input type="submit" value="退会"></p>
     </form>
 
-
+    <!--会員のみ表示-->
+    {% if user_id != 1 %}
     <p><a href="{{url_for('homes.user_info_change')}}">会員情報変更</a></p>
     <p><a href="{{url_for('homes.book_register')}}">教科書登録</a></p>
     <p><a href="{{url_for('homes.buy')}}">購入</a></p>
+    {% endif %}
 
-   <!-- {% if  %} 管理者の場合のみ有効になる --> 
+    <!--管理者のみ表示-->
+    {% if user_id == 1 %}
     <p><a href="{{url_for('homes.user_management')}}">（管理者専用）会員管理</a></p>
     <p><a href="{{url_for('homes.book_management')}}">（管理者専用）教科書管理</a></p>
-  <!-- {% endif %} -->  
+    {% endif %}  
 
+    <!--会員のみ表示-->
+    {% if user_id != 1 %}
     <table border="1">
         <caption>登録教科書一覧</caption>
+        <thead>
         <tr>
             <th>教科書ID</th>
             <th>タイトル</th>
@@ -36,22 +42,26 @@
             <th>分類</th>
             <th>状態</th>
         </tr>
+        </thead>
+        <tbody>
         {% for book in books %}
         <tr>
-            <th>{{ book.id }}</th>
-            <th>{{ book.title }}</th>
-            <th>{{ book.price }}</th>
-            <th>{{ book.category }}</th>
-            <th>{{ book.status }}</th>
-            <th>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.category }}</td>
+            <td>{{ book.status }}</td>
+            <td>
                 <form action="{{url_for('home.book_info_change')}}"><input type="submit" value="変更"></form>
-            </th>
-            <th>
+            </td>
+            <td>
                 <form action="{{url_for('book_info_change.book_info_delete')}}" method="post"><input type="submit" value="削除"></form>
-            </th>
+            </td>
         </tr>
         {% endfor %}
+        </tbody>
     </table>
+    {% endif %}
     <p><a href="{{url_for('top.logout')}}">ログアウト</a></p>
 </body>
 </html>
