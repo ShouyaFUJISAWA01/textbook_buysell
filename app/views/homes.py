@@ -14,11 +14,7 @@ home = Blueprint('home', __name__)
 @home.route('/buy')
 def buy():
     items=Book.query.order_by(Book.id.desc()).all()#データベースBookクラスから一覧を持ってくる
-    return render_template('buy.html', items=items)#html上で
-
-#データベースの本の一覧表示
-#booksテーブルの一覧を持ってくる
-#変数名＝クラス名.query.all()
+    return render_template('buy.html', items=items)
 
 
 #教科書登録ページの表示(OK)
@@ -37,12 +33,10 @@ def book_info_change(id):
 #会員情報変更ページの表示
 @home.route('/user_info_change/<int:id>')
 def user_info_change(id):
-    #userクラスからidと一致するデータを取り出して変数に代入する
     user_change=User.query.get(id)#idと一致するもの
-    return render_template('user_info_change.html', user_change=user_change) #html状の変数に代入)
+    return render_template('user_info_change.html', user_change=user_change)
 
 
-#購入ページと同じ
 #会員管理ページの表示
 @home.routte('/user_management')
 def user_management():
