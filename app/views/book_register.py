@@ -7,10 +7,10 @@ from lib.models import Book
 from lib.db import db
 
 
-book_register = Blueprint('book_register', __name__)
+book_register_bp = Blueprint('book_register', __name__)
 
 # 教科書登録処理
-@book_register.route('/book_register/create', methods=['POST'])
+@book_register_bp.route('/book_register/create', methods=['POST'])
 def book_register():
     book=Book(
         name=request.form.get('name'),
