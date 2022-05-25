@@ -5,7 +5,6 @@
         <title>教科書売買システム</title>
     </head>
     <body>
-
         {% for category, message in get_flashed_messages(with_categories=true) %}
             {% if category == 'error' %}
                 {{ message }}
