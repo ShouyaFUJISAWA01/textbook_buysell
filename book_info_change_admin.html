@@ -2,10 +2,10 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>教科書情報変更</title>
+        <title>教科書情報変更（管理者用）</title>
     </head>
     <body>
-        <form action="{{url_for('book_info_change.book_info_change')}}" method="POST">
+        <form action="{{url_for('book_management.book_update')}}" method="POST">
             <p>変更する教科書情報を入力してください</p>
             <p>ISBN番号<input type="text" name="isbn"  size="20">
                 <p><small>ISBNの後は-なしで数字を入力してください</small></p>

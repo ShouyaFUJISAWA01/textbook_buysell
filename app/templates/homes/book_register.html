@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>教科書売買システム</title>
+    </head>
+    <body>
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+            {% if category == 'error' %}
+                {{ message }}
+            {% endif %}
+        {% endfor %}
+
+        <form action="{{url_for('book_register.book_register')}}" method="POST">
+            <h3>登録する教科書を入力してください</h3>
+            <div>
+                タイトル
+                <input type="text" name="name">
+            </div>
+            <div>
+                ISBN番号＜教科書背面ISBN以降の数字（ハイフンなし）＞ 
+                <input type="text" name="isbn_no">
+            </div>
+            <div>
+                著者
+                <input type="text" name="author" size="15">
+            </div>
+            <div>
+                出版社
+                <input type="text" name="company" size="20">
+            </div>
+            <div>
+                価格
+                <input type="number" name="price" size="10">
+            </div>
+            <div>
+                分類
+                <select size="1" name="category">
+                    <option value="0" selected>文学部系</option>
+                    <option value="1" >教育学部系</option>
+                    <option value="2" >法学部系</option>
+                    <option value="3" >社会学部系</option>
+                    <option value="4" >経済学部系</option>
+                    <option value="5" >理学部系</option>
+                    <option value="6" >医学部系</option>
+                    <option value="7" >歯学部系</option>
+                    <option value="8" >薬学部系</option>
+                    <option value="9" >工学部系</option>
+                    <option value="10" >農学部系</option>
+                </select>
+            </div>
+            <div>
+                状態
+                <select name="status">
+                    <option value="0">中古</option>
+                    <option value="1">新品</option>
+                    <option value="2" selected>未使用</option>
+                </select>
+            </div>
+
+            <div>
+                <input type="submit" value="登録">
+            </div>
+        </form>
+    </body>
+</html>
