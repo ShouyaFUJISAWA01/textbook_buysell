@@ -7,6 +7,11 @@
     <title>ログイン</title>
 </head>
 <body>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category == 'error' %}
+            {{ message }}
+        {% endif %}
+    {% endfor %}
     <form action="{{url_for('top.login')}}" method="POST">
     <p>メールアドレス<input type="email" name="email" required></p>
     <p>パスワード　<input type="password" name="password" required></p>

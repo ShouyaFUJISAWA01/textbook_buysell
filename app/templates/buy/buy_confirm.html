@@ -23,10 +23,10 @@
             </tr>
         </table>
         <div>
-        <form action="{{ url_for('buy.buy_complete')}}, id=buy_items.id" method="post">
-            <input type="radio" name="pay_method" value="1" checked required>クレジットカード
-            <input type="radio" name="pay_method" value="2">口座振替
-            <input type="radio" name="pay_method" value="3">代引き
+        <form action="{{ url_for('buy.buy_complete' , id = buy_items.id)}}" method="post">
+             <input type="radio" name="pay_method" value="1" checked requied>クレジットカード
+             <input type="radio" name="pay_method" value="2">口座振替
+             <input type="radio" name="pay_method" value="3">代引き
         </div>
             <input type="submit" value="購入">
         </form>

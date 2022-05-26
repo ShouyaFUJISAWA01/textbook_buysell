@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for,session, redirect, Blueprint
+from flask import render_template, request, url_for,session, redirect, Blueprint,flash
 
 import datetime
 
@@ -47,6 +47,7 @@ def login():
         user=User.query.filter(User.email==email)
         user=user.filter(User.password==password).first()
         if user is None:
+            flash('入力した値を再度確認してください', 'error')
             return redirect(url_for('top.top'))
         session['user_id']=user.id
         return redirect(url_for('top.home'))

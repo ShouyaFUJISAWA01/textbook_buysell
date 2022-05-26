@@ -13,8 +13,7 @@ home_bp = Blueprint('home', __name__)
 #購入ページの表示
 @home_bp.route('/buy')
 def buy():
-    items=Book.query.all() #データベースBookクラスから一覧を持ってくる
-    print(items)
+    items=Book.query.all()#データベースBookクラスから一覧を持ってくる
     return render_template('homes/buy.html', items=items)
 
 
