@@ -13,28 +13,33 @@ user_management = Blueprint('user_management', __name__)
 @user_management.route('/user_info_change/show/<int:id>')
 def user_info_show(id):
     user_info = User.query.get(id)
-    return render_template('user_info_change_admin.html', user_info=user_info)
+    return render_template('user_management/user_info_change_admin.html', user_info=user_info)
 
 
 @user_management.route('user_info_change/search', methods=['POST'])
 def user_search():
     searched_name = request.form.get('search')
+    print(searched_name)
     if searched_name == '':
-        user_info = User.query.all()
+        users = User.query.all()
     else:
-        user_info = User.query.filter(User.name==searched_name)
-    return render_template('user_info_change_admin', user_info=user_info)
+        users = User.query.filter(User.name==searched_name).all()
+    return render_template('homes/user_management.html', users=users)
 
 
-@user_management.route('/user_info_change/delete/<int:id>', methods=['POST'])
+@user_management.route('/user_info_change/admin_delete/<int:id>', methods=['POST'])
 def user_delete(id):
     user_info = User.query.get(id)
+    books_info = Book.query.filter(Book.user_id == id).all()
+    for book_info in books_info:
+        db.session.delete(book_info)
+        db.session.commit()
     db.session.delete(user_info)
     db.session.commit()
-    return redirect(url_for('user_management.user_search'))
+    return redirect(url_for('home.user_management'))
 
 
-@user_management.route('/user_info_change/update', methods=['POST'])
+@user_management.route('/user_info_change/admin_update/<int:id>', methods=['POST'])
 def user_update(id):
     user_info = User.query.get(id)
     user_info.name = request.form.get('name')
@@ -48,4 +53,4 @@ def user_update(id):
     except:
         flash('入力した内容を再度確認してください')
         return redirect(url_for('user_management.user_info_show', id=id))
-    return redirect(url_for('user_management.user_search'))
+    return redirect(url_for('home.user_management'))
