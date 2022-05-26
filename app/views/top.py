@@ -10,7 +10,7 @@ top_bp=Blueprint('top', __name__)
 
 
 #ログイン画面を表示
-@top_bp.route('/top')
+@top_bp.route('/')
 def top():
     return render_template('top/login.html')
 
