@@ -15,46 +15,46 @@
             <h3>登録する教科書を入力してください</h3>
             <div>
                 タイトル
-                <input type="text" name="title">
+                <input type="text" name="title" required>
             </div>
             <div>
                 ISBN番号＜教科書背面ISBN以降の数字（ハイフンなし）＞ 
-                <input type="text" name="isbn_no">
+                <input type="text" name="isbn_no" required>
             </div>
             <div>
                 著者
-                <input type="text" name="author" size="15">
+                <input type="text" name="author" size="15" required>
             </div>
             <div>
                 出版社
-                <input type="text" name="company" size="20">
+                <input type="text" name="company" size="20" required>
             </div>
             <div>
                 価格
-                <input type="number" name="price" size="10">
+                <input type="number" name="price" size="10" min="0" max="999999999" required>
             </div>
             <div>
                 分類
-                <select size="1" name="category">
-                    <option value="0" selected>文学部系</option>
-                    <option value="1" >教育学部系</option>
-                    <option value="2" >法学部系</option>
-                    <option value="3" >社会学部系</option>
-                    <option value="4" >経済学部系</option>
-                    <option value="5" >理学部系</option>
-                    <option value="6" >医学部系</option>
-                    <option value="7" >歯学部系</option>
-                    <option value="8" >薬学部系</option>
-                    <option value="9" >工学部系</option>
-                    <option value="10" >農学部系</option>
+                <select size="1" name="category" required>
+                    <option value="文学部系" selected>文学部系</option>
+                    <option value="教育学部系" >教育学部系</option>
+                    <option value="法学部系" >法学部系</option>
+                    <option value="社会学部系" >社会学部系</option>
+                    <option value="経済学部系" >経済学部系</option>
+                    <option value="理学部系" >理学部系</option>
+                    <option value="医学部系" >医学部系</option>
+                    <option value="歯学部系" >歯学部系</option>
+                    <option value="薬学部系" >薬学部系</option>
+                    <option value="工学部系" >工学部系</option>
+                    <option value="農学部系" >農学部系</option>
                 </select>
             </div>
             <div>
                 状態
-                <select name="status">
-                    <option value="0">中古</option>
-                    <option value="1">新品</option>
-                    <option value="2" selected>未使用</option>
+                <select name="status" required>
+                    <option value="中古">中古</option>
+                    <option value="新品">新品</option>
+                    <option value="未使用" selected>未使用</option>
                 </select>
             </div>
 

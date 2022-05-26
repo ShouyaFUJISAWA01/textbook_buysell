@@ -8,7 +8,7 @@
 </head>
 <body>
     <form action="{{url_for('user_management.user_search')}}" method="POST">
-      <p>会員検索（ユーザ名を入力）<input type="search" name="search"><input type="submit" value="検索"></p>
+        <p>会員検索（ユーザ名を入力）<input type="text" name="search"><input type="submit" value="検索"></p>
     </form>
     <table border="1">
         <caption>会員情報一覧</caption>
@@ -20,26 +20,27 @@
             <th>メールアドレス</th>
         </tr>
         {% for user in users %}
-        <tr>
-            <th>{{ user.id }}</th>
-            <th>{{ user.name }}</th>
-            <th>{{ user.address }}</th>
-            <th>{{ user.tel }}</th>
-            <th>{{ user.email }}</th>
-        <th>
-        <form action="{{url_for('user_management.user_info_show')}}" method="GET">
-            <input type="submit" value="変更">
-        </th>
-        </form>
-        <th>
-        <form action="{{url_for('user_management.user_delete')}}" method="POST">
-            <input type="submit" value="退会">
-        </th>
-        </tr>
+            {% if user.id != 1 %}
+                <tr>
+                    <th>{{ user.id }}</th>
+                    <th>{{ user.name }}</th>
+                    <th>{{ user.address }}</th>
+                    <th>{{ user.tel }}</th>
+                    <th>{{ user.email }}</th>
+                    <th>
+                        <form action="{{url_for('user_management.user_info_show', id=user.id)}}" method="GET">
+                            <input type="submit" value="変更">
+                        </form>
+                    </th>
+                    <th>
+                        <form action="{{url_for('user_management.user_delete', id=user.id)}}" method="POST">
+                            <input type="submit" value="退会">
+                        </form>
+                    </th>
+                </tr>
+            {% endif %}
         {% endfor %}
-        </form>
-       
+        <a href="{{url_for('top.home')}}">会員ページへ</a>
     </table>
-
 </body>
 </html>

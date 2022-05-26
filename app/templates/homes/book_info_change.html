@@ -9,47 +9,47 @@
             <h3>変更する教科書を入力してください</h3>
             <div>
                 タイトル
-                <input type="text" name="name" value="{{ book_change.title }}">
+                <input type="text" name="title" value="{{ book_change.title }}" required>
             </div>
             <div>
                 ISBN番号＜教科書背面ISBN以降の数字（ハイフンなし）＞ 
-                <input type="text" name="isbn_no" value="{{ book_change.isbn_no }}">
+                <input type="text" name="isbn_no" value="{{ book_change.isbn_no }}" required>
             </div>
             <div>
                 著者
-                <input type="text" name="author" size="15" value="{{ book_change.author }}">
+                <input type="text" name="author" size="15" value="{{ book_change.author }}" required>
             </div>
             <div>
                 出版社
-                <input type="text" name="company" size="20" value="{{ book_change.publisher }}">
+                <input type="text" name="company" size="20" value="{{ book_change.publisher }}" required>
             </div>
             <div>
                 価格
-                <input type="number" name="price" size="10" value="{{ book_change.price }}">
+                <input type="number" name="price" size="10" min="0" max="999999999" value="{{ book_change.price }}" required>
             </div>
             <div>
                 分類
-                <select size="1" name="category"> 
-                    <!-- <--!categoryの値を引き継いでください--> 
-                    <option value="0" {{ "selected" if book_change.category == "0" }}>文学部系</option>
-                    <option value="1" {{ "selected" if book_change.category == "1" }}>教育学部系</option>
-                    <option value="2" {{ "selected" if book_change.category == "2" }}>法学部系</option>
-                    <option value="3" {{ "selected" if book_change.category == "3" }}>社会学部系</option>
-                    <option value="4" {{ "selected" if book_change.category == "4" }}>経済学部系</option>
-                    <option value="5" {{ "selected" if book_change.category == "5" }}>理学部系</option>
-                    <option value="6" {{ "selected" if book_change.category == "6" }}>医学部系</option>
-                    <option value="7" {{ "selected" if book_change.category == "7" }}>歯学部系</option>
-                    <option value="8" {{ "selected" if book_change.category == "8" }}>薬学部系</option>
-                    <option value="9" {{ "selected" if book_change.category == "9" }}>工学部系</option>
-                    <option value="10" {{ "selected" if book_change.category == "10" }}>農学部系</option>
+                <select size="1" name="category" required> 
+                    <!--categoryの値を引き継いでください--> 
+                    <option value="文学部系" {{ "selected" if book_change.category == "文学部系" }}>文学部系</option>
+                    <option value="教育学部系" {{ "selected" if book_change.category == "教育学部系" }}>教育学部系</option>
+                    <option value="法学部系" {{ "selected" if book_change.category == "法学部系" }}>法学部系</option>
+                    <option value="社会学部系" {{ "selected" if book_change.category == "社会学部系" }}>社会学部系</option>
+                    <option value="経済学部系" {{ "selected" if book_change.category == "経済学部系" }}>経済学部系</option>
+                    <option value="理学部系" {{ "selected" if book_change.category == "理学部系" }}>理学部系</option>
+                    <option value="医学部系" {{ "selected" if book_change.category == "医学部系" }}>医学部系</option>
+                    <option value="歯学部系" {{ "selected" if book_change.category == "歯学部系" }}>歯学部系</option>
+                    <option value="薬学部系" {{ "selected" if book_change.category == "薬学部系" }}>薬学部系</option>
+                    <option value="工学部系" {{ "selected" if book_change.category == "工学部系" }}>工学部系</option>
+                    <option value="農学部系" {{ "selected" if book_change.category == "農学部系" }}>農学部系</option>
                 </select>
             </div>
             <div>
                 状態
-                <select name="status">
-                    <option value="0" {{ "selected" if book_change.status == "0" }}>中古</option>
-                    <option value="1" {{ "selected" if book_change.status == "1" }}>新品</option>
-                    <option value="2" {{ "selected" if book_change.status == "2" }}>未使用</option>
+                <select name="status" required>
+                    <option value="中古" {{ "selected" if book_change.status == "中古" }}>中古</option>
+                    <option value="新品" {{ "selected" if book_change.status == "新品" }}>新品</option>
+                    <option value="未使用" {{ "selected" if book_change.status == "未使用" }}>未使用</option>
                 </select>
             </div>
 

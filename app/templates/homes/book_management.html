@@ -6,9 +6,8 @@
     </head>
     <body>
         <form action="{{url_for('book_management.book_search')}}" method="POST">
-        <p>教科書検索（教科書名）<input type="search"><input type="submit" value="検索"></p>
+        <p>教科書検索（教科書名）<input type="text" name="search"><input type="submit" value="検索"></p>
         </form>
-      
         <table border="1">
             <caption>教科書情報一覧</caption>
             <tr>
@@ -28,19 +27,19 @@
                 <td>{{ book.category }}</td>
                 <td>{{ book.status }}</td>
                 <td>
-                    <form action="{{url_for('book_management.book_info_show')}}" method="GET">
+                    <form action="{{url_for('book_management.book_info_show', id=book.id)}}" method="GET">
                     <input type="submit" value="変更">
                 </td>
                     </form>
                 <td>
-                    <form action="{{url_for('book_management.book_delete')}}" method="POST">
+                    <form action="{{url_for('book_management.book_delete', id=book.id)}}" method="POST">
                     <input type="submit" value="削除">
                 </td>
                     </form>
             </tr>
-             {% endfor %}
-          
+            {% endfor %}
         </table>        
+        <a href="{{url_for('top.home')}}">会員ページへ</a>
         
     </body>
 </html>

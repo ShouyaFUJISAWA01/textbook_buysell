@@ -13,9 +13,11 @@
         <tr><th>氏名</th><th>{{user.name}}</th></tr>
         <tr><th>ユーザID</th><th>{{user.id}}</th></tr>
     </table>
+    {% if user_id != 1 %}
     <form action="{{url_for('user_info_change.user_info_delete', id=user_id)}}" method="post">
-    <p><input type="submit" value="退会"></p>
+        <p><input type="submit" value="退会"></p>
     </form>
+    {% endif %}
 
     <!--会員のみ表示-->
     {% if user_id != 1 %}
