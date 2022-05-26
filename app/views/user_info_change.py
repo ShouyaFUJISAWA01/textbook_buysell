@@ -25,7 +25,7 @@ def user_info_change(id):
         db.session.commit()
     except:
         flash('入力した内容を再度確認してください', 'error')
-        return redirect(url_for('homes.user_info_change', id=id))
+        return redirect(url_for('home.user_info_change', id=id))
     return redirect(url_for('top.home'))
 
 # 以下で使うidを後ほどHTMLで指定する

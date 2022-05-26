@@ -19,6 +19,9 @@ def buy_confirm(id):
 
 
 #購入完了ページの表示
-@buy_bp.route('/buy/confirm/complete', methods=['POST'])
-def buy_complete():
+@buy_bp.route('/buy/confirm/complete/<int:id>', methods=['POST'])
+def buy_complete(id):
+    book = Book.query.get(id)
+    db.session.delete(book)
+    db.session.commit()
     return render_template('buy/buy_complete.html')

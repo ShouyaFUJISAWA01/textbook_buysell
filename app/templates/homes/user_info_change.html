@@ -8,11 +8,16 @@
 </head>
 <body>
     <p>変更する会員情報を入力して下さい</p>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category == 'error' %}
+            {{message}}
+        {% endif %}
+    {% endfor %}
     <form action="{{url_for('user_info_change.user_info_change', id=user_change.id)}}" method="POST">
-    <p>名前　<input type="text" name="name" value="{{user_change.name}}"></p>
-    <p>住所　<input type="text" name="address" size="50" value="{{user_change.address}}"></p>
-    <p>電話番号　<input type="tel" name="tel" value="{{user_change.tel}}"></p>
-    <p>メールアドレス　<input type="email" name="email" value="{{user_change.email}}"></p>
+    <p>名前　<input type="text" name="name" value="{{user_change.name}}" required></p>
+    <p>住所　<input type="text" name="address" size="50" value="{{user_change.address}}" required></p>
+    <p>電話番号　<input type="tel" name="tel" value="{{user_change.tel}}" required></p>
+    <p>メールアドレス　<input type="email" name="email" value="{{user_change.email}}" required></p>
     <p><input type="submit" value="変更する"></p>
     </form>
 </body>
