@@ -15,7 +15,7 @@ buy_bp = Blueprint('buy', __name__)
 @buy_bp.route('/buy/confirm/<int:id>')
 def buy_confirm(id):
     buy_items=Book.query.get(id)#idと一致する変数に代入
-    return render_template('buy/buy_confirm.html',buy_items=buy_items) 
+    return render_template('buy/buy_confirm.html', buy_items=buy_items) 
 
 
 #購入完了ページの表示

@@ -14,8 +14,7 @@ home_bp = Blueprint('home', __name__)
 @home_bp.route('/buy')
 def buy():
     user_id = session.get('user_id')
-    items=Book.query.all() #データベースBookクラスから一覧を持ってくる
-    print(items)
+    items=Book.query.all()#データベースBookクラスから一覧を持ってくる
     return render_template('homes/buy.html', items=items, user_id=user_id)
 
 
