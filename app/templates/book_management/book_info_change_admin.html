@@ -7,12 +7,12 @@
     <body>
         <form action="{{url_for('book_management.book_update', id=book_info.id)}}" method="POST">
             <p>変更する教科書情報を入力してください</p>
-            <p>タイトル<input type="text" name="title" value="{{book_info.title}}" required></p>
-            <p>ISBN番号<input type="text" name="isbn"  size="20" value="{{book_info.isbn_no}}" required>
+            <p>タイトル<input type="text" name="title" value="{{book_info.title}}" maxlength="100" required></p>
+            <p>ISBN番号<input type="text" name="isbn"  size="20" value="{{book_info.isbn_no}}" maxlength="13" required>
                 <p><small>ISBNの後は-なしで数字を入力してください</small></p>
-            <p>著者<input type="text" name="author" size="20" value="{{book_info.author}}" required></p>
-            <p>出版社<input type="text" name="publisher" size="20" value="{{book_info.publisher}}" required></p>
-            <P>価格<input type="number" name="price" size="20" min="0" max="999999999" value="{{book_info.price}}" required></P>
+            <p>著者<input type="text" name="author" size="20" value="{{book_info.author}}" maxlength="50" required></p>
+            <p>出版社<input type="text" name="publisher" size="20" value="{{book_info.publisher}}" maxlength="50" required></p>
+            <P>価格<input type="number" name="price" size="20" min="0" max="999999999" value="{{book_info.price}}"  required></P>
             <p>分類
                 <select size="1" name="category" required>
                     <option value="文学部系" {{ "selected" if book_info.category == "文学部系" }}>文学部系</option>
