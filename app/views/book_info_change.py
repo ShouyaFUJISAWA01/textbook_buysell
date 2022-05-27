@@ -37,6 +37,9 @@ def book_info_change(id):
 @book_info_change_delete.route('/home/book_delete/<int:id>', methods=['POST'])
 def book_info_delete(id):
     book = Book.query.get(id)
-    db.session.delete(book)
-    db.session.commit()
+    try:
+        db.session.delete(book)
+        db.session.commit()
+    except:
+        return redirect(url_for('top.home'))
     return redirect(url_for('top.home'))

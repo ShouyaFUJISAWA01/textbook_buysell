@@ -29,8 +29,11 @@ def book_search():
 @book_management.route('/book_info_change/admin_delete/<int:id>', methods=['POST'])
 def book_delete(id):
     book_info = Book.query.get(id)
-    db.session.delete(book_info)
-    db.session.commit()
+    try:
+        db.session.delete(book_info)
+        db.session.commit()
+    except:
+        return redirect(url_for('home.book_management'))
     return redirect(url_for('home.book_management'))
 
 #選択された教科書内容を入力内容に更新し、一覧を再表示する
