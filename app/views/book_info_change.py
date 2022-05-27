@@ -29,8 +29,8 @@ def book_info_change(id):
         db.session.merge(book)
         db.session.commit()
     except:
-        flash('入力した値を再度確認してください')
-        return redirect(url_for('homes.book_info_change', id=id))
+        flash('入力した値を再度確認してください', 'error')
+        return redirect(url_for('home.book_info_change', id=id))
     return redirect(url_for('top.home'))
 
 # 教科書削除処理
