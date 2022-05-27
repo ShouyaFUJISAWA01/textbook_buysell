@@ -16,15 +16,15 @@
         </div>
         <div>
             住所 
-            <input type="text" name="address" size="50"  value="{{user_info.address}}" required>
+            <input type="text" name="address" size="50"  value="{{user_info.address}}" maxlength="200" required>
         </div>
         <div>
             電話番号 
-            <input type="tel" name="tel" value="{{user_info.tel}}" required>
+            <input type="tel" name="tel" value="{{user_info.tel}}" maxlength="20" required>
         </div>
         <div>
             メールアドレス 
-            <input type="email" name="email" value="{{user_info.email}}" required>
+            <input type="email" name="email" value="{{user_info.email}}" maxlength="50" required>
         </div>
         <div>
             <input type="submit" value="変更する">
