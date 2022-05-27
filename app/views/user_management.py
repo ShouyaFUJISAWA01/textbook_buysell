@@ -34,8 +34,11 @@ def user_delete(id):
     for book_info in books_info:
         db.session.delete(book_info)
         db.session.commit()
-    db.session.delete(user_info)
-    db.session.commit()
+    try:
+        db.session.delete(user_info)
+        db.session.commit()
+    except:
+        return redirect(url_for('home.user_management'))
     return redirect(url_for('home.user_management'))
 
 

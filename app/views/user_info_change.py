@@ -33,8 +33,11 @@ def user_info_change(id):
 def user_info_delete(id):
     user_info = User.query.get(id)
     books_info = Book.query.filter(Book.user_id == id).all()
-    db.session.delete(user_info)
-    db.session.commit()
+    try:
+        db.session.delete(user_info)
+        db.session.commit()
+    except:
+        return redirect(url_for('top.top'))
     for book_info in books_info:
         db.session.delete(book_info)
         db.session.commit()
