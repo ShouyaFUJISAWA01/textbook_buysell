@@ -23,7 +23,7 @@ def book_search():
         books = Book.query.all()
     else:
         books = Book.query.filter(Book.title==searched_title).all()
-    return render_template('book_management/book_management.html', books=books)
+    return render_template('homes/book_management.html', books=books)
 
 #選択された教科書を削除し、教科書一覧を再表示する
 @book_management.route('/book_info_change/admin_delete/<int:id>', methods=['POST'])
