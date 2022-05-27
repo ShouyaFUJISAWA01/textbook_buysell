@@ -58,7 +58,7 @@
                 </form>
             </td>
             <td>
-                <form action="{{url_for('book_info_change.book_info_delete', id=book.id)}}" method="post"><input type="submit" value="削除"></form>
+                <form action="{{url_for('book_info_change.show_book_delete_page', id=book.id)}}"><input type="submit" value="削除"></form>
             </td>
         </tr>
         {% endfor %}

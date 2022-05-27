@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, redirect,flash,session
+from flask import Blueprint, render_template, request, url_for, redirect,flash,session
 
 from lib.models import Book
 
@@ -6,14 +6,14 @@ from lib.db import db
 
 import datetime
 
-book_info_change_delete = Blueprint('book_info_change', __name__)
+book_info_change_bp = Blueprint('book_info_change', __name__)
 
 
 
 
 
 # 教科書情報変更処理
-@book_info_change_delete.route('/book_info_change/<int:id>/update', methods=['POST'])
+@book_info_change_bp.route('/book_info_change/<int:id>/update', methods=['POST'])
 def book_info_change(id):
     book=Book.query.get(id)
     book.user_id = session.get('user_id')
@@ -33,8 +33,13 @@ def book_info_change(id):
         return redirect(url_for('home.book_info_change', id=id))
     return redirect(url_for('top.home'))
 
+@book_info_change_bp.route('/home/book_delete/confirm/<int:id>')
+def show_book_delete_page(id):
+    book_info = Book.query.get(id)
+    return render_template('homes/book_delete_confirm.html', book_info=book_info)
+
 # 教科書削除処理
-@book_info_change_delete.route('/home/book_delete/<int:id>', methods=['POST'])
+@book_info_change_bp.route('/home/book_delete/<int:id>', methods=['POST'])
 def book_info_delete(id):
     book = Book.query.get(id)
     try:
