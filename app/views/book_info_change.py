@@ -20,7 +20,7 @@ def book_info_change(id):
     book.isbn_no=request.form.get('isbn_no')
     book.title=request.form.get('title')
     book.author=request.form.get('author')
-    book.company=request.form.get('company')
+    book.publisher=request.form.get('publisher')
     book.price=request.form.get('price')
     book.category=request.form.get('category')
     book.status=request.form.get('status')
