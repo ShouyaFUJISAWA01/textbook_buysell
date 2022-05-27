@@ -49,12 +49,12 @@ def book_update(id):
     book_info.status = request.form.get('status')
     book_info.updated = datetime.datetime.now()
 
-    # try:
-    db.session.merge(book_info)
-    db.session.commit()
-    # except:
-    #     flash('入力した内容を再度確認してください')
-    #     return redirect(url_for('book_management.book_info_show', id=id))
+    try:
+        db.session.merge(book_info)
+        db.session.commit()
+    except:
+        flash('入力した内容を再度確認してください')
+        return redirect(url_for('book_management.book_info_show', id=id))
     return redirect(url_for('home.book_management'))
 
 
