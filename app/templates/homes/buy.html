@@ -17,18 +17,20 @@
             <th>状態</th>
         </tr>
         {% for item in items %}
-        <tr>
-            <th>{{ item.id }}</th>
-            <th>{{ item.title }}</th>
-            <th>{{ item.price }}</th>
-            <th>{{ item.category }}</th>
-            <th>{{ item.status }}</th>
-            <th>
-            <form action="{{url_for('buy.buy_confirm', id=item.id)}}" method="GET">
-                <input type="submit" value="購入へ">
-            </form>
-            </th>
-        </tr>
+            {% if item.user_id != user_id %}
+                <tr>
+                    <th>{{ item.id }}</th>
+                    <th>{{ item.title }}</th>
+                    <th>{{ item.price }}</th>
+                    <th>{{ item.category }}</th>
+                    <th>{{ item.status }}</th>
+                    <th>
+                    <form action="{{url_for('buy.buy_confirm', id=item.id)}}" method="GET">
+                        <input type="submit" value="購入へ">
+                    </form>
+                    </th>
+                </tr>
+            {% endif %}
         {% endfor %}
         </table>
 </body>
