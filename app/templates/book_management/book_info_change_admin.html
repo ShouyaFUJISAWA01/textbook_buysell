@@ -5,6 +5,11 @@
         <title>教科書情報変更（管理者用）</title>
     </head>
     <body>
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+            {% if category == 'error' %}
+                {{message}}
+            {% endif %}
+        {% endfor %}
         <form action="{{url_for('book_management.book_update', id=book_info.id)}}" method="POST">
             <p>変更する教科書情報を入力してください</p>
             <p>タイトル<input type="text" name="title" value="{{book_info.title}}" maxlength="100" required></p>

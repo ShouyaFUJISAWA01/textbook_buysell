@@ -53,7 +53,7 @@ def book_update(id):
         db.session.merge(book_info)
         db.session.commit()
     except:
-        flash('入力した内容を再度確認してください')
+        flash('入力した内容を再度確認してください', 'error')
         return redirect(url_for('book_management.book_info_show', id=id))
     return redirect(url_for('home.book_management'))
 
