@@ -28,7 +28,11 @@ def user_info_change(id):
         return redirect(url_for('home.user_info_change', id=id))
     return redirect(url_for('top.home'))
 
-# 以下で使うidを後ほどHTMLで指定する
+@user_info_change_bp.route('/home/user_delete/confirm')
+def show_user_delete_page():
+    user_id = session.get('user_id')
+    return render_template('homes/user_delete_confirm.html', user_id=user_id)
+
 @user_info_change_bp.route('/home/user_delete/<int:id>', methods=['POST'])
 def user_info_delete(id):
     user_info = User.query.get(id)
