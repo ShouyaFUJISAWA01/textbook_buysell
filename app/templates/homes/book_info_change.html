@@ -9,19 +9,19 @@
             <h3>変更する教科書を入力してください</h3>
             <div>
                 タイトル
-                <input type="text" name="title" value="{{ book_change.title }}" required>
+                <input type="text" name="title" value="{{ book_change.title }}" maxlength="100" required>
             </div>
             <div>
                 ISBN番号＜教科書背面ISBN以降の数字（ハイフンなし）＞ 
-                <input type="text" name="isbn_no" value="{{ book_change.isbn_no }}" required>
+                <input type="text" name="isbn_no" value="{{ book_change.isbn_no }}" maxlength="13" required>
             </div>
             <div>
                 著者
-                <input type="text" name="author" size="15" value="{{ book_change.author }}" required>
+                <input type="text" name="author" size="15" value="{{ book_change.author }}" maxlength="50" required>
             </div>
             <div>
                 出版社
-                <input type="text" name="publisher" size="20" value="{{ book_change.publisher }}" required>
+                <input type="text" name="publisher" size="20" value="{{ book_change.publisher }}" maxlength="50" required>
             </div>
             <div>
                 価格
