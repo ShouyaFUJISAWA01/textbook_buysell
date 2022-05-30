@@ -7,7 +7,7 @@
     <title>（管理者専用）会員情報変更</title>
 </head>
 <body>
-    <form action="{{url_for('user_management.user_update', id=user_info.id)}}" method="POST">
+    <form action="{{url_for('user_management.user_confirm', id=user_info.id)}}" method="POST">
         <p>変更する会員情報を入力して下さい</p>
 
         <div>
@@ -27,7 +27,7 @@
             <input type="email" name="email" value="{{user_info.email}}" maxlength="50" required>
         </div>
         <div>
-            <input type="submit" value="変更する">
+            <input type="submit" value="変更確認へ">
         </div>
 
     </form>

@@ -60,3 +60,13 @@ def user_update(id):
         flash('入力した内容を再度確認してください')
         return redirect(url_for('user_management.user_info_show', id=id))
     return redirect(url_for('home.user_management'))
+
+#変更確認画面
+@user_management.route('/user_info_change/confirm/<int:id>', methods=['POST'])
+def user_confirm(id):
+    name=request.form.get('name')
+    address=request.form.get('address')
+    tel=request.form.get('tel')
+    email=request.form.get('email')
+    user_id=id
+    return render_template('homes/user_info_change_confirm.html', name=name,address=address,tel=tel,email=email,user_id=user_id)
