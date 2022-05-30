@@ -14,7 +14,7 @@
         <tr><th>ユーザID</th><th>{{user.id}}</th></tr>
     </table>
     {% if user_id != 1 %}
-    <form action="{{url_for('user_info_change.user_info_delete', id=user_id)}}" method="post">
+    <form action="{{url_for('user_info_change.show_user_delete_page')}}">
         <p><input type="submit" value="退会"></p>
     </form>
     {% endif %}
@@ -58,7 +58,7 @@
                 </form>
             </td>
             <td>
-                <form action="{{url_for('book_info_change.book_info_delete', id=book.id)}}" method="post"><input type="submit" value="削除"></form>
+                <form action="{{url_for('book_info_change.show_book_delete_page', id=book.id)}}"><input type="submit" value="削除"></form>
             </td>
         </tr>
         {% endfor %}

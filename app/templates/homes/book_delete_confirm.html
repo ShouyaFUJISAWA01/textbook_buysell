@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>下記の教科書を削除する場合はボタンを押してください</p>
+    <table border="1">
+        <caption>登録教科書一覧</caption>
+        <thead>
+        <tr>
+            <th>教科書ID</th>
+            <th>タイトル</th>
+            <th>価格</th>
+            <th>分類</th>
+            <th>状態</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ book_info.id }}</td>
+            <td>{{ book_info.title }}</td>
+            <td>{{ book_info.price }}</td>
+            <td>{{ book_info.category }}</td>
+            <td>{{ book_info.status }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <form action="{{url_for('book_info_change.book_info_delete', id=book_info.id)}}" method="post">
+        <input type="submit" value="削除">
+    </form>
+</body>
+</html>

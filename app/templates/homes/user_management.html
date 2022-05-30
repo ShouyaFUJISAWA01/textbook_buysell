@@ -33,7 +33,7 @@
                         </form>
                     </th>
                     <th>
-                        <form action="{{url_for('user_management.user_delete', id=user.id)}}" method="POST">
+                        <form action="{{url_for('user_management.show_user_delete_page', id=user.id)}}" method="get">
                             <input type="submit" value="退会">
                         </form>
                     </th>

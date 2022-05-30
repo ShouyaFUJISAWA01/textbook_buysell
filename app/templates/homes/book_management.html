@@ -32,7 +32,7 @@
                 </td>
                     </form>
                 <td>
-                    <form action="{{url_for('book_management.book_delete', id=book.id)}}" method="POST">
+                    <form action="{{url_for('book_management.show_book_delete_page', id=book.id)}}">
                     <input type="submit" value="削除">
                 </td>
                     </form>

@@ -14,7 +14,7 @@ init_db(app)
 # 「Views.py」をインポート
 from app.views import book_info_change, book_management, book_register, top, user_info_change, user_management,buy,homes
 
-app.register_blueprint(book_info_change.book_info_change_delete, url_prefix='/')
+app.register_blueprint(book_info_change.book_info_change_bp, url_prefix='/')
 app.register_blueprint(book_management.book_management, url_prefix='/')
 app.register_blueprint(book_register.book_register_bp, url_prefix='/')
 app.register_blueprint(top.top_bp, url_prefix='/')
