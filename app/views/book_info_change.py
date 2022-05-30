@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, redirect,flash,session
+from flask import Blueprint, request, url_for, redirect,flash,session, render_template
 
 from lib.models import Book
 
@@ -32,6 +32,20 @@ def book_info_change(id):
         flash('入力した値を再度確認してください', 'error')
         return redirect(url_for('home.book_info_change', id=id))
     return redirect(url_for('top.home'))
+
+#教科書情報変更確認画面
+@book_info_change_delete.route('/home/book_delete/confirm/<int:id>', methods=['POST'])
+def book_confirm(id):
+    title=request.form.get('title')
+    isbn_no=request.form.get('isbn_no')
+    author=request.form.get('author')
+    publisher=request.form.get('publisher')
+    price=request.form.get('price')
+    category=request.form.get('category')
+    status=request.form.get('status')
+    return render_template('homes/book_confirm.html',title=title, isbn_no=isbn_no, author=author, publisher=publisher,price=price, category=category, status=status, id=id )
+
+
 
 # 教科書削除処理
 @book_info_change_delete.route('/home/book_delete/<int:id>', methods=['POST'])

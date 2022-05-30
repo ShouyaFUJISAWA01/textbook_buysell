@@ -10,7 +10,7 @@
                 {{message}}
             {% endif %}
         {% endfor %}
-        <form action="{{url_for('book_info_change.book_info_change', id=book_change.id)}}" method="POST">
+        <form action="{{url_for('book_info_change.book_confirm', id=book_change.id)}}" method="POST">
             <h3>変更する教科書を入力してください</h3>
             <div>
                 タイトル
@@ -59,7 +59,7 @@
             </div>
 
             <div>
-                <input type="submit" value="変更">
+                <input type="submit" value="確認画面へ">
             </div>
         </form>
     </body>
