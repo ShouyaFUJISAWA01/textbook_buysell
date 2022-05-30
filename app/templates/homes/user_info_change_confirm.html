@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会員情報変更確認</title>
+</head>
+<body>
+    <h4>こちらの変更内容でお間違いないですか。</h4>
+    <form action="{{url_for('user_info_change.user_info_change', id=user_id)}}" method="POST"> 
+        <p>名前　<input type="text" name="name" value="{{name}}" maxlength="50" required></p>
+        <p>住所　<input type="text" name="address" size="50" value="{{address}}" maxlength="200" required></p>
+        <p>電話番号　<input type="tel" name="tel" value="{{tel}}" maxlength="20" required></p>
+        <p>メールアドレス　<input type="email" name="email" value="{{email}}" maxlength="50" required></p>
+        <p><input type="submit" value="変更"></p>
+        </form>
+</body>
