@@ -32,7 +32,6 @@
                     <option value="工学部系" {{ "selected" if category == "工学部系" }}>工学部系</option>
                     <option value="農学部系" {{ "selected" if category == "農学部系" }}>農学部系</option>
                 </select>
-                </select>
             </p>
             <p>教科書の状態
                 <select size="1" name="status" required>
@@ -41,10 +40,7 @@
                     <option value="未使用" {{ "selected" if status == "未使用" }}>未使用</option>
                 </select>
             </p>
-
-        
-                <input type="submit" value="変更する">
-            
+            <input type="submit" value="変更する">
         </form>
     </body>
 </html>

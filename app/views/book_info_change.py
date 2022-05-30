@@ -9,9 +9,6 @@ import datetime
 book_info_change_bp = Blueprint('book_info_change', __name__)
 
 
-
-
-
 # 教科書情報変更処理
 @book_info_change_bp.route('/book_info_change/<int:id>/update', methods=['POST'])
 def book_info_change(id):
@@ -33,6 +30,7 @@ def book_info_change(id):
         return redirect(url_for('home.book_info_change', id=id))
     return redirect(url_for('top.home'))
 
+
 #教科書情報変更確認画面
 @book_info_change_bp.route('/home/book_info/confirm/<int:id>', methods=['POST'])
 def book_confirm(id):
@@ -50,6 +48,7 @@ def book_confirm(id):
 def show_book_delete_page(id):
     book_info = Book.query.get(id)
     return render_template('homes/book_delete_confirm.html', book_info=book_info)
+
 
 # 教科書削除処理
 @book_info_change_bp.route('/home/book_delete/<int:id>', methods=['POST'])
