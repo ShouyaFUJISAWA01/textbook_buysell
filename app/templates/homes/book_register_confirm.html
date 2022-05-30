@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>教科書売買システム</title>
+    </head>
+    <body>
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+            {% if category == 'error' %}
+                {{ message }}
+            {% endif %}
+        {% endfor %}
+        <form action="{{url_for('book_register.book_register',title=title, isbn_no=isbn_no, author=author, publisher=publisher, price=price, category=category, status=status )}}" method="POST">
+            <h3>以下の内容で登録しますか？</h3>
+            <div>
+                タイトル
+                <input type="text" name="title" required value="{{title}}">
+            </div>
+            <div>
+                ISBN番号＜教科書背面ISBN以降の数字（ハイフンなし）＞ 
+                <input type="text" name="isbn_no" required value="{{isbn_no}}">
+            </div>
+            <div>
+                著者
+                <input type="text" name="author" size="15" required value="{{author}}">
+            </div>
+            <div>
+                出版社
+                <input type="text" name="publisher" size="20" required value="{{ publisher }}">
+            </div>
+            <div>
+                価格
+                <input type="number" name="price" size="10" min="0" max="999999999" required value="{{price}}">
+            </div>
+            <div>
+                分類
+                <select size="1" name="category" required>
+                    <option value="文学部系" {{ "selected" if category == "文学部系" }}>文学部系</option>
+                    <option value="教育学部系" {{ "selected" if category == "教育学部系" }}>教育学部系</option>
+                    <option value="法学部系" {{ "selected" if category == "法学部系" }}>法学部系</option>
+                    <option value="社会学部系" {{ "selected" if category == "社会学部系" }}>社会学部系</option>
+                    <option value="経済学部系" {{ "selected" if category == "経済学部系" }}>経済学部系</option>
+                    <option value="理学部系" {{ "selected" if category == "理学部系" }}>理学部系</option>
+                    <option value="医学部系" {{ "selected" if category == "医学部系" }}>医学部系</option>
+                    <option value="歯学部系" {{ "selected" if category == "歯学部系" }}>歯学部系</option>
+                    <option value="薬学部系" {{ "selected" if category == "薬学部系" }}>薬学部系</option>
+                    <option value="工学部系" {{ "selected" if category == "工学部系" }}>工学部系</option>
+                    <option value="農学部系" {{ "selected" if category == "農学部系" }}>農学部系</option>
+                </select>
+            </div>
+            <div>
+                状態
+                <select name="status" required>
+                    <option value="中古" {{ "selected" if status == "中古" }}>中古</option>
+                    <option value="新品" {{ "selected" if status == "新品" }}>新品</option>
+                    <option value="未使用" {{ "selected" if status == "未使用" }}>未使用</option>
+                </select>
+            </div>
+
+            <div>
+                <input type="submit" value="登録する">
+            </div>
+        </form>
+    </body>
+</html>

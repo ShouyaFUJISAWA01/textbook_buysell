@@ -19,22 +19,41 @@ def top():
 def register():
     return render_template('top/register.html')
 
+# 登録確認画面を表示
+@top_bp.route('/register/confirm', methods=['POST'])
+def register_confirm():
+    if request.method == 'POST':
+        name=request.form.get('name')
+        address=request.form.get('address')
+        tel=request.form.get('tel')
+        email=request.form.get('email')
+        password=request.form.get('password')
+        try:
+            return render_template('top/register_confirm.html', name=name, address=address, tel=tel, email=email, password=password)
+        except:
+            flash('入力した値を再度確認してください', 'error')
+            return redirect(url_for('top.resgister'))
+    return redirect(url_for('top.top'))
+        
+        
+
+
 #フォームに入力された内容をuserテーブルに保存する
 @top_bp.route('/top/register/create', methods=['POST'])
 def create():
-    name=request.form.get('name')
-    address=request.form.get('address')
-    tel=request.form.get('tel')
-    email=request.form.get('email')
-    password=request.form.get('password')
-    
-    user=User(name=name, address=address, tel=tel, email=email,password=password, updated=None)
-
+    if request.method == 'POST':
+        name=request.form.get('name')
+        address=request.form.get('address')
+        tel=request.form.get('tel')
+        email=request.form.get('email')
+        password=request.form.get('password')
+        user=User(name=name, address=address, tel=tel, email=email, password=password, updated=None)
     try:
         db.session.add(user)
         db.session.commit()
     except:
-        return redirect(url_for('top.register'))
+        flash('入力した値を再度確認してください', 'error')
+        return redirect(url_for('top.register_confirm'))
     return redirect(url_for('top.top'))
 
 #ログイン処理を行う

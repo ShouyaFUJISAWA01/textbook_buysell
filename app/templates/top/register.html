@@ -7,7 +7,13 @@
     <title>新規会員登録</title>
 </head>
 <body>
-    <form action="{{url_for('top.create')}}" method="POST">
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category == 'error' %}
+            {{ message }}
+        {% endif %}
+    {% endfor %}
+    <form action="{{url_for('top.register_confirm')}}" method="POST">
         <p>新規会員情報を入力して下さい</p>
         <p>名前　<input type="text" name="name" size="20" maxlength="50" required></p>
         <p>住所　<input type="text" name="address" size="50" maxlength="200"  required></p>
@@ -15,7 +21,7 @@
         <p>メールアドレス　<input type="email" name="email" maxlength="50" required></p>
         <p>パスワード　<input type="password" name="password" maxlength="50" minlength="8" required></p>
         
-        <p><input type="submit" value="登録"></p>
+        <p><input type="submit" value="登録確認画面へ"></p>
     </form>
 </body>
 </html>

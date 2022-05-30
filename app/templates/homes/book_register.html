@@ -11,23 +11,23 @@
             {% endif %}
         {% endfor %}
 
-        <form action="{{url_for('book_register.book_register')}}" method="POST">
+        <form action="{{url_for('book_register.book_register_confirm')}}" method="POST">
             <h3>登録する教科書を入力してください</h3>
             <div>
                 タイトル
-                <input type="text" name="title" required>
+                <input type="text" name="title" maxlength="100" required>
             </div>
             <div>
                 ISBN番号＜教科書背面ISBN以降の数字（ハイフンなし）＞ 
-                <input type="text" name="isbn_no" required>
+                <input type="text" name="isbn_no" maxlength="13" required>
             </div>
             <div>
                 著者
-                <input type="text" name="author" size="15" required>
+                <input type="text" name="author" size="15" maxlength="50" required>
             </div>
             <div>
                 出版社
-                <input type="text" name="company" size="20" required>
+                <input type="text" name="publisher" size="20" maxlength="50" required>
             </div>
             <div>
                 価格
@@ -59,7 +59,7 @@
             </div>
 
             <div>
-                <input type="submit" value="登録">
+                <input type="submit" value="登録確認画面へ">
             </div>
         </form>
     </body>
