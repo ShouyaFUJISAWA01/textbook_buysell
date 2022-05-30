@@ -32,6 +32,8 @@ def register_confirm():
             return render_template('top/register_confirm.html', name=name, address=address, tel=tel, email=email, password=password)
         except:
             flash('入力した値を再度確認してください', 'error')
+            return redirect(url_for('top.resgister'))
+    return redirect(url_for('top.top'))
         
         
 
