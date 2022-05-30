@@ -34,7 +34,7 @@ def book_info_change(id):
     return redirect(url_for('top.home'))
 
 #教科書情報変更確認画面
-@book_info_change_bp.route('/home/book_delete/confirm/<int:id>', methods=['POST'])
+@book_info_change_bp.route('/home/book_info/confirm/<int:id>', methods=['POST'])
 def book_confirm(id):
     title=request.form.get('title')
     isbn_no=request.form.get('isbn_no')
