@@ -34,36 +34,36 @@
 
     <!--会員のみ表示-->
     {% if user_id != 1 %}
-    <table border="1">
-        <caption>登録教科書一覧</caption>
-        <thead>
-        <tr>
-            <th>教科書ID</th>
-            <th>タイトル</th>
-            <th>価格</th>
-            <th>分類</th>
-            <th>状態</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for book in books %}
-        <tr>
-            <td>{{ book.id }}</td>
-            <td>{{ book.title }}</td>
-            <td>{{ book.price }}</td>
-            <td>{{ book.category }}</td>
-            <td>{{ book.status }}</td>
-            <td>
-                <form action="{{url_for('home.book_info_change', id=book.id)}}"><input type="submit" value="変更">
-                </form>
-            </td>
-            <td>
-                <form action="{{url_for('book_info_change.show_book_delete_page', id=book.id)}}"><input type="submit" value="削除"></form>
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table border="1">
+            <caption>登録教科書一覧</caption>
+            <thead>
+                <tr>
+                    <th>教科書ID</th>
+                    <th>タイトル</th>
+                    <th>価格</th>
+                    <th>分類</th>
+                    <th>状態</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.price }}</td>
+                    <td>{{ book.category }}</td>
+                    <td>{{ book.status }}</td>
+                    <td>
+                        <form action="{{url_for('home.book_info_change', id=book.id)}}"><input type="submit" value="変更">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{url_for('book_info_change.show_book_delete_page', id=book.id)}}"><input type="submit" value="削除"></form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
     <p><a href="{{url_for('top.logout')}}">ログアウト</a></p>
 </body>

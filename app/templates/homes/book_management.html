@@ -6,7 +6,7 @@
     </head>
     <body>
         <form action="{{url_for('book_management.book_search')}}" method="POST">
-        <p>教科書検索（教科書名）<input type="text" name="search"><input type="submit" value="検索"></p>
+            <p>教科書検索（教科書名）<input type="text" name="search"><input type="submit" value="検索"></p>
         </form>
         <table border="1">
             <caption>教科書情報一覧</caption>
@@ -40,6 +40,5 @@
             {% endfor %}
         </table>        
         <a href="{{url_for('top.home')}}">会員ページへ</a>
-        
     </body>
 </html>

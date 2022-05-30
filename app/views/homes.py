@@ -10,6 +10,7 @@ from lib.db import db
 # Blueprintでitemアプリケーションを登録
 home_bp = Blueprint('home', __name__)
 
+
 #購入ページの表示
 @home_bp.route('/buy')
 def buy():

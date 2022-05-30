@@ -14,10 +14,12 @@ top_bp=Blueprint('top', __name__)
 def top():
     return render_template('top/login.html')
 
+
 #新規登録画面を表示
 @top_bp.route('/top/register')
 def register():
     return render_template('top/register.html')
+
 
 # 登録確認画面を表示
 @top_bp.route('/register/confirm', methods=['POST'])
@@ -32,10 +34,8 @@ def register_confirm():
             return render_template('top/register_confirm.html', name=name, address=address, tel=tel, email=email, password=password)
         except:
             flash('入力した値を再度確認してください', 'error')
-            return redirect(url_for('top.resgister'))
+            return redirect(url_for('top.register'))
     return redirect(url_for('top.top'))
-        
-        
 
 
 #フォームに入力された内容をuserテーブルに保存する
@@ -47,7 +47,11 @@ def create():
         tel=request.form.get('tel')
         email=request.form.get('email')
         password=request.form.get('password')
-        user=User(name=name, address=address, tel=tel, email=email, password=password, updated=None)
+        if not User.query.filter(User.email == email).first():
+            user=User(name=name, address=address, tel=tel, email=email, password=password, updated=None)
+        else:
+            flash('同じメールアドレスは登録できません', 'error')
+            return redirect(url_for('top.register'))
     try:
         db.session.add(user)
         db.session.commit()
@@ -55,6 +59,7 @@ def create():
         flash('入力した値を再度確認してください', 'error')
         return redirect(url_for('top.register_confirm'))
     return redirect(url_for('top.top'))
+
 
 #ログイン処理を行う
 @top_bp.route('/top/login', methods=['GET', 'POST'])
@@ -71,6 +76,7 @@ def login():
         session['user_id']=user.id
         return redirect(url_for('top.home'))
 
+
 #会員ページを表示
 @top_bp.route('/top/home')
 def home():
@@ -78,7 +84,6 @@ def home():
     user = User.query.filter(User.id == user_id).first()
     books=Book.query.filter(Book.user_id == user_id).all()
     return render_template('top/home.html', books=books, user=user, user_id=user_id)
-    
 
 
 #ログアウト処理を行う

@@ -13,12 +13,10 @@
         {% endif %}
     {% endfor %}
     <form action="{{url_for('top.login')}}" method="POST">
-    <p>メールアドレス<input type="email" name="email" required></p>
-    <p>パスワード　<input type="password" name="password" required></p>
-    <p><input type="submit" value="ログイン"></p>
+        <p>メールアドレス<input type="email" name="email" required></p>
+        <p>パスワード　<input type="password" name="password" required></p>
+        <p><input type="submit" value="ログイン"></p>
     </form>
-
     <p><a href="{{url_for('top.register')}}">新規会員登録はこちら</a></p>
-        
 </body>
 </html>

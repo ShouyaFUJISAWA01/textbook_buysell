@@ -9,7 +9,6 @@
 <body>
     <form action="{{url_for('user_management.user_confirm', id=user_info.id)}}" method="POST">
         <p>変更する会員情報を入力して下さい</p>
-
         <div>
             名前 
             <input type="text" name="name" value="{{user_info.name}}" maxlength="50" required>
@@ -29,7 +28,6 @@
         <div>
             <input type="submit" value="変更確認へ">
         </div>
-
     </form>
 </body>
 </html>
