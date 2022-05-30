@@ -26,6 +26,9 @@ def user_search():
         users = User.query.filter(User.name==searched_name).all()
     return render_template('homes/user_management.html', users=users)
 
+@user_management.route('/user_info_change/admin_delete/confirm/<int:id>')
+def show_user_delete_page(id):
+    return render_template('user_management/user_delete_confirm.html', user_id=id)
 
 @user_management.route('/user_info_change/admin_delete/<int:id>', methods=['POST'])
 def user_delete(id):
