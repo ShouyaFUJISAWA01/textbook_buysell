@@ -9,11 +9,28 @@ from lib.db import db
 
 book_management = Blueprint('book_management', __name__)
 
-#選択された教科書の情報変更ページを表示
+#選択された教科書の変更ページを表示
 @book_management.route('/book_info_change/show/<int:id>')
 def book_info_show(id):
     book_info=Book.query.get(id)
     return render_template('book_management/book_info_change_admin.html', book_info=book_info)
+     
+
+#選択された教科書の情報変更ページ確認画面を表示
+@book_management.route('/book_info_change/admin_confirm/<int:id>', methods=['POST'])
+def book_confirm_admin(id):
+    title=request.form.get('title')
+    isbn_no=request.form.get('isbn_no')
+    author=request.form.get('author')
+    publisher=request.form.get('publisher')
+    price=request.form.get('price')
+    category=request.form.get('category')
+    status=request.form.get('status')
+    return render_template('book_management/book_info_change_confirm_admin.html',title=title, isbn_no=isbn_no, author=author, publisher=publisher,price=price, category=category, status=status, id=id )
+    
+
+
+
 
 #検索結果に一致する教科書情報を一覧表示する
 @book_management.route('/book_info_change/search', methods=['POST'])

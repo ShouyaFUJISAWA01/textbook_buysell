@@ -10,7 +10,7 @@
                 {{message}}
             {% endif %}
         {% endfor %}
-        <form action="{{url_for('book_management.book_update', id=book_info.id)}}" method="POST">
+        <form action="{{url_for('book_management.book_confirm_admin', id=book_info.id)}}" method="POST">
             <p>変更する教科書情報を入力してください</p>
             <p>タイトル<input type="text" name="title" value="{{book_info.title}}" maxlength="100" required></p>
             <p>ISBN番号<input type="text" name="isbn"  size="20" value="{{book_info.isbn_no}}" maxlength="13" required>
@@ -43,7 +43,7 @@
             </p>
 
         
-                <input type="submit" value="変更する">
+                <input type="submit" value="確認画面へ">
             
         </form>
     </body>
