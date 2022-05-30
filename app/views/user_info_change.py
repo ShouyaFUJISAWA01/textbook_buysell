@@ -1,4 +1,3 @@
-from distutils.log import debug
 from flask import render_template, request, url_for, session, redirect, flash, Blueprint
 
 import datetime
@@ -28,7 +27,24 @@ def user_info_change(id):
         return redirect(url_for('home.user_info_change', id=id))
     return redirect(url_for('top.home'))
 
+#変更確認画面
+@user_info_change_bp.route('/home/user_info_change/confirm', methods=['POST'])
+def user_confirm():
+    name=request.form.get('name')
+    address=request.form.get('address')
+    tel=request.form.get('tel')
+    email=request.form.get('email')
+    user_id=session.get('user_id')
+    return render_template('homes/user_info_change_confirm.html', name=name,address=address,tel=tel,email=email,user_id=user_id)
+
+
 # 以下で使うidを後ほどHTMLで指定する
+@user_info_change_bp.route('/home/user_delete/confirm')
+def show_user_delete_page():
+    user_id = session.get('user_id')
+    return render_template('homes/user_delete_confirm.html', user_id=user_id)
+
+  
 @user_info_change_bp.route('/home/user_delete/<int:id>', methods=['POST'])
 def user_info_delete(id):
     user_info = User.query.get(id)

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規会員登録</title>
+</head>
+<body>
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category == 'error' %}
+            {{ message }}
+        {% endif %}
+    {% endfor %}
+    <form action="{{url_for('top.create', name=name, address=address, tel=tel, email=email, password=password)}}" method="POST">
+        <p>以下の内容で登録しますか？</p>
+        <p>名前　<input type="text" name="name" size="20" maxlength="50" required value="{{name}}"></p>
+        <p>住所　<input type="text" name="address" size="50" maxlength="200"  required value="{{address}}"></p>
+        <p>電話番号　<input type="tel" name="tel" size="20" maxlength="20" required value="{{tel}}"></p>
+        <p>メールアドレス　<input type="email" name="email" maxlength="50" required value="{{email}}"></p>
+        <p>パスワード　<input type="text" name="password" maxlength="50" minlength="8" required value="{{password}}"></p>
+        
+        <p><input type="submit" value="登録する"></p>
+    </form>
+</body>
+</html>
